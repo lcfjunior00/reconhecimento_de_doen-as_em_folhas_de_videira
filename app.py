@@ -24,6 +24,7 @@ def carrega_imagem():
         st.success('Image carregada com sucesso')
 
         image = np.array(image, dtype=np.float32)
+        image = image.resize((256,256))
         image = image / 255.0
         image = np.expand_dims(image, axis=0)
 
