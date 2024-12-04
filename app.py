@@ -13,7 +13,7 @@ def carrega_modelo():
 
     return interpreter
 
-def carrega_imagem(interpreter):
+def carrega_imagem():
     upload_file = st.file_uploader('Arraste e solte sua imagem', type=['png', 'jpg', 'jpeg'])
 
     if upload_file is not None:
@@ -23,15 +23,9 @@ def carrega_imagem(interpreter):
         st.image(image)
         st.success('Image carregada com sucesso')
 
-        input_details = interpreter.get_input_details()
-        input_shape = input_details[0]['shape']  # [1, altura, largura, canais]
-        target_height, target_width = input_shape[1], input_shape[2]
-        target_height, target_width = input_shape[1], input_shape[2]
-
-        image = image.resize((target_width, target_height))
         image = np.array(image, dtype=np.float32)
         image = image / 255.0
-        #image = np.expand_dims(image, axis=0)
+        image = np.expand_dims(image, axis=0)
 
         return image
 
@@ -70,7 +64,7 @@ def main():
     interpreter = carrega_modelo()
 
     #Carrega imagem:
-    image = carrega_imagem(interpreter)
+    image = carrega_imagem()
     
     #Classifica:
     if image is not None:
