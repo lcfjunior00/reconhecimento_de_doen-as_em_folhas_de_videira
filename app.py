@@ -70,7 +70,7 @@ def main():
     interpreter = carrega_modelo()
 
     #Carrega imagem:
-    image = carrega_imagem()
+    image = carrega_imagem(interpreter)
     
     #Classifica:
     if image is not None:
