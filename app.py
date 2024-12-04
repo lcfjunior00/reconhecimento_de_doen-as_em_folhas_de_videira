@@ -23,6 +23,10 @@ def carrega_imagem():
         st.image(image)
         st.success('Image carregada com sucesso')
 
+        input_shape = input_details[0]['shape']  # [1, altura, largura, canais]
+        target_height, target_width = input_shape[1], input_shape[2]
+
+        image = image.resize((target_width, target_height))
         image = np.array(image, dtype=np.float32)
         image = image / 255.0
         image = np.expand_dims(image, axis=0)
