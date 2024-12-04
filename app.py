@@ -8,7 +8,7 @@ import plotly.express as px
 
 @st.cache_resource
 def carrega_modelo():
-    interpreter = tf.lite.Interpreter(model_path='/models/modelo_quantizado16bits.tflite')
+    interpreter = tf.lite.Interpreter(model_path='models/modelo_quantizado16bits.tflite')
     interpreter.allocate_tensors()
 
     return interpreter
